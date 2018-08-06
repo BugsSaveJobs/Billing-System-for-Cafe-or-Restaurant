@@ -15,6 +15,7 @@ If you want to add any food item, follow the below mentioned steps :-
     5. Again do above step in line 324.
     6. Add    txtPeaNuts.configure(state=DISABLED)  on line 369.
     7. Add the below code on line 443 :
+    ```ruby
           def chkPeaNuts():
                 if (var45.get() == 1):
                   txtPeaNuts.configure(state=NORMAL)
@@ -22,16 +23,17 @@ If you want to add any food item, follow the below mentioned steps :-
                 elif (var45.get() == 0):
                   txtPeaNuts.configure(state=DISABLED)
                   varPeaNuts.set("0")
-                  
+    ```             
     8. Now add val45=float(varPeaNuts.get()) on line 776.
     9. In the calculation of temptotal on line 778 add on end (val45*the value of peanut within a bracket).
     10. Add these lines at the end of any block :
+    ```ruby
           PeaNuts= Checkbutton(***, text='Pea Nuts\t\t( Rs. 200 )', variable=var9, onvalue=1, offvalue=0, 
-					      font=('arial', 12, 'bold'),  command=lambda: chkPeaNuts()).grid(row=**, column=0, sticky=W)
+		   font=('arial', 12, 'bold'),  command=lambda: chkPeaNuts()).grid(row=**,column=0, sticky=W)
           txtPeaNuts = Entry(***, font=('arial', 12, 'bold'), textvariable=varPeaNuts, width=6,            
-                 justify='right', state=DISABLED)
+                   justify='right', state=DISABLED)
           txtPeaNuts.grid(row = **, column = 1)
-          
+    ```    
           *** - Add f1/f3/f2TOP/f2BOTTOM depnding on where you want to insert.
           ** - Put (1+row value of above item),just be sure to put item at the end of any BLOCK.
     11. lblspace.grid(row=****, column=0) ,increase the value at *** by one.
