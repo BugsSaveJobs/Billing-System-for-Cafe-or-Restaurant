@@ -773,6 +773,8 @@ def TotalCost():
 	val41=float(varGreenSalad.get())
 	val42=float(varAlooRaita.get())
 	val43=float(varMixVegRaita.get())
+
+
 	temptotal = ((val1*140.0) + (val2*210.0) + (val3*140.0) + (val4*220.0) +  (val5*180.0) +  (val6*160.0) + (val7*70.0) + 
 		(val8*170.0) + (val9*200.0) + (val10*190.0) + (val11*180.0) + (val12*210.0) + (val13*160.0) + (val14*70.0) + 
 		(val15*200.0) + (val16*90.0) + (val17*160.0) + (val18*15.0) + (val19*15.0) + (val20*60.0) + (val21*70.0) + (val22*80.0) + 
@@ -780,13 +782,14 @@ def TotalCost():
 		(val31*45.0) + (val32*35.0) + (val33*50.0) + (val34*40.0) + (val35*90.0) + (val36*125.0) + (val37*170.0) + (val38*180.0) + 
 		(val39*160.0) + (val40*45.0) + (val41*60.0) + (val42*70.0) + (val43*70.0))
 
-	tax=(temptotal*0.2)
+	taxrate=20
+	tax=(temptotal*(taxrate/100))
 	varTax.set(tax)
 	varSubTotal.set(temptotal)
 	varTotal.set(temptotal+tax)
 
 
-#======================================FIRST BLOCK=================================================================
+#====================================== LEFTMOST BLOCK =================================================================
 
 lblMeal = Label(f1, font=('arial', 18, 'bold'), text="\nVEG. MENU\n")
 lblMeal.grid(row=0, column=0)
@@ -888,7 +891,7 @@ lblspace=Label(f1, text="\n\n\n\n\n\n\n\n\n\n")
 lblspace.grid(row=19, column=0)
 
 
-#==================================
+#================================== MIDDLE UPPER BLOCK =============================
 
 
 lblMeal = Label(f2TOP, font=('arial', 18, 'bold'), text="\n\tSOUPS AND BEVERAGES\t\n")
@@ -939,7 +942,7 @@ txtSodaPop.grid(row = 8, column = 1)
 lblspace=Label(f2TOP, text="\n\n")
 lblspace.grid(row=9, column=0)
 
-#================================
+#================================ MIDDLE LOWER BLOCK ===========================
 
 lblPaymentmethod = Label(f2BOTTOM, font=('arial', 14, 'bold'), text="Payment method", bd=10, width=16, anchor='w')
 lblPaymentmethod.grid(row=0, column=0)
@@ -965,7 +968,7 @@ lblTotal.grid(row=3, column=1)
 txtTotal = Entry(f2BOTTOM, font=('arial', 11, 'bold'), textvariable= varTotal, width=9, justify='right', state=DISABLED)
 txtTotal.grid(row=3, column=2)
 
-#=====================================
+#===================================== BUTTONS BLOCK =================
 btnTotal = Button(f2BOTTOM, padx=16, pady=1, bd=4, fg='black', font=('arial',16, 'bold'), width=4, 
 			text="Total", command=lambda: TotalCost()).grid(row=4,column=0)
 
@@ -980,7 +983,7 @@ lblspace.grid(row=5, column=0)
 
 
 
-#======================================
+#====================================== RIGHTMOST BLOCK ============================
 
 lblMeal = Label(f3, font=('arial', 18, 'bold'), text="\nMAIN COURSE\n")
 lblMeal.grid(row=0, column=0)
