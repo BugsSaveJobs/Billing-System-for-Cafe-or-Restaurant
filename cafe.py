@@ -2,6 +2,7 @@ from tkinter import *
 import random
 import time;
 import datetime
+from fpdf import FPDF
 from tkinter import Tk,StringVar,ttk,IntVar,messagebox
 
 root=Tk()
@@ -789,6 +790,240 @@ def TotalCost():
 	varTotal.set(temptotal+tax)
 
 
+def GenerateInvoice():
+	varcount=1
+
+	val1=float(varVegbiryani.get())
+	val2=float(varPaneerTikkaHarimirch.get())
+	val3=float(varGobiMasala.get())
+	val4=float(varVegKolhapuri.get())
+	val5=float(varMixVegetable.get())
+	val6=float(varPaneerButterMasala.get())
+	val7=float(varVegCheeseBurger.get())
+	val8=float(varPaneerTikka.get())
+	val9=float(varMalaipaneerTikka.get())
+	val10=float(varAfghaniChickenBiryani.get())
+	val11=float(varStirFryChicken.get())
+	val12=float(varMurgBasilTikka.get())
+	val13=float(varTandooriLollypop.get())
+	val14=float(varChickenSpicyBurger.get())
+	val15=float(varChickenReshmiKabab.get())
+	val16=float(varChickenCheeseBurger.get())
+	val17=float(varKadhaiChicken.get())
+	val18=float(varCoffee.get())
+	val19=float(varTea.get())
+	val20=float(varCaféLatte.get())
+	val21=float(varCoconutSoup.get())
+	val22=float(varVegManchowSoup.get())
+	val23=float(varMangoLassi.get())
+	val24=float(varSweetLassi.get())
+	val25=float(varSodaPop.get())
+	val26=float(varAlooKulcha.get())
+	val27=float(varCheeseGarlicNaan.get())
+	val28=float(varOnionkulcha.get())
+	val29=float(varButterNaan.get())
+	val30=float(varPaneerKulcha.get())
+	val31=float(varGarlicNaan.get())
+	val32=float(varPlainKulcha.get())
+	val33=float(varPaneerParatha.get())
+	val34=float(varChillyParatha.get())
+	val35=float(varChickenSingaporeNoodles.get())
+	val36=float(varJeeraRice.get())
+	val37=float(varVegDumBiryani.get())
+	val38=float(varMixFriedRice.get())
+	val39=float(varEggFriedRice.get())
+	val40=float(varOnionSalad.get())
+	val41=float(varGreenSalad.get())
+	val42=float(varAlooRaita.get())
+	val43=float(varMixVegRaita.get())
+
+
+
+	temptotal = ((val1*140.0) + (val2*210.0) + (val3*140.0) + (val4*220.0) +  (val5*180.0) +  (val6*160.0) + (val7*70.0) + 
+		(val8*170.0) + (val9*200.0) + (val10*190.0) + (val11*180.0) + (val12*210.0) + (val13*160.0) + (val14*70.0) + 
+		(val15*200.0) + (val16*90.0) + (val17*160.0) + (val18*15.0) + (val19*15.0) + (val20*60.0) + (val21*70.0) + (val22*80.0) + 
+		(val23*40.0) + (val24*40.0) + (val25*30.0) + (val26*40.0) + (val27*70.0) + (val28*40.0) + (val29*40.0) +(val30*50.0) + 
+		(val31*45.0) + (val32*35.0) + (val33*50.0) + (val34*40.0) + (val35*90.0) + (val36*125.0) + (val37*170.0) + (val38*180.0) + 
+		(val39*160.0) + (val40*45.0) + (val41*60.0) + (val42*70.0) + (val43*70.0))
+
+	taxrate=20
+	tax=(temptotal*(taxrate/100))
+	final=temptotal+tax
+
+
+
+	class PDF(FPDF):
+	    def header(self):
+	        # Logo
+	        # Arial bold 15
+	        self.set_font('Arial', 'B', 15)
+	        # Move to the right
+	        self.cell(50)
+	        # Title
+	        self.cell(90, 10, '    INDIAN CUISINE RESTAURANT', 1, 0)
+	        # Line break
+	        self.ln(20)
+	        self.set_font('Arial', 'B', 10)
+	        self.cell(0, 10, '                    ITEM                                                            QUANTITY                              PRICE/PC.                  TOTAL' )
+	        self.ln(8)
+
+	 #   def footer(self):
+	  #      self.set_y(-15)
+	   #     self.set_font('Arial', 'I', 8)
+	        
+
+# Instantiation of inherited class
+	
+	pdf = PDF()
+	pdf.alias_nb_pages()
+	pdf.add_page()
+	pdf.set_font('Times', '', 12)
+	if(val1!=0):
+	    pdf.cell(60, 4,'   {}.   Veg. Biryani                                                         {}                                       140                        {}'.format(varcount,val1,val1*140), 0, 1)
+	    varcount=varcount+1
+	if(val2!=0):
+	    pdf.cell(60, 4,'   {}.   Paneer Tikka Harimirch                                       {}                                       210                        {}'.format(varcount,val2,val2*210), 0, 1)
+	    varcount=varcount+1
+	if(val3!=0):
+	    pdf.cell(60, 4,'   {}.   Gobi Masala                                                         {}                                       140                        {}'.format(varcount,val3,val3*140), 0, 1)
+	    varcount=varcount+1
+	if(val4!=0):
+	    pdf.cell(60, 4,'   {}.   Veg. Kolhapuri                                                     {}                                       220                        {}'.format(varcount,val4,val4*220), 0, 1)
+	    varcount=varcount+1
+	if(val5!=0):
+	    pdf.cell(60, 4,'   {}.   Mix Vegetable                                                      {}                                       180                        {}'.format(varcount,val5,val5*180), 0, 1)
+	    varcount=varcount+1
+	if(val6!=0):
+	    pdf.cell(60, 4,'   {}.   Paneer Butter Masala                                            {}                                       160                        {}'.format(varcount,val6,val6*160), 0, 1)
+	    varcount=varcount+1
+	if(val7!=0):
+	    pdf.cell(60, 4,'   {}.   Veg Cheese Burger                                               {}                                       70                          {}'.format(varcount,val7,val7*70), 0, 1)
+	    varcount=varcount+1
+	if(val8!=0):
+	    pdf.cell(60, 4,'   {}.   Paneer Tikka                                                         {}                                       170                        {}'.format(varcount,val8,val8*170), 0, 1)
+	    varcount=varcount+1
+	if(val9!=0):
+	    pdf.cell(60, 4,'   {}.   Malai paneer Tikka                                               {}                                       200                        {}'.format(varcount,val9,val9*200), 0, 1)
+	    varcount=varcount+1
+	if(val10!=0):
+	    pdf.cell(60, 4,'   {}.   Afghani Chicken Biryani                                      {}                                       190                        {}'.format(varcount,val10,val10*190), 0, 1)
+	    varcount=varcount+1
+	if(val11!=0):
+	    pdf.cell(60, 4,'   {}.   Stir Fry Chicken                                                  {}                                       180                        {}'.format(varcount,val11,val11*180), 0, 1)
+	    varcount=varcount+1
+	if(val12!=0):
+	    pdf.cell(60, 4,'   {}.   Murg Basil Tikka                                                {}                                       210                        {}'.format(varcount,val12,val12*210), 0, 1)
+	    varcount=varcount+1
+	if(val13!=0):
+	    pdf.cell(60, 4,'   {}.   Tandoori Lollypop                                              {}                                       160                        {}'.format(varcount,val13,val13*160), 0, 1)
+	    varcount=varcount+1
+	if(val14!=0):
+	    pdf.cell(60, 4,'   {}.   Chicken Spicy Burger                                         {}                                       70                          {}'.format(varcount,val14,val14*70), 0, 1)
+	    varcount=varcount+1
+	if(val15!=0):
+	    pdf.cell(60, 4,'   {}.   Chicken Reshmi Kabab                                       {}                                       200                        {}'.format(varcount,val15,val15*200), 0, 1)
+	    varcount=varcount+1
+	if(val16!=0):
+	    pdf.cell(60, 4,'   {}.   Chicken Cheese Burger                                       {}                                       90                         {}'.format(varcount,val16,val16*90), 0, 1)
+	    varcount=varcount+1
+	if(val17!=0):
+	    pdf.cell(60, 4,'   {}.   Kadhai Chicken                                                   {}                                       160                       {}'.format(varcount,val17,val17*160), 0, 1)
+	    varcount=varcount+1
+	if(val18!=0):
+	    pdf.cell(60, 4,'   {}.   Coffee                                                                  {}                                       15                         {}'.format(varcount,val18,val18*15), 0, 1)
+	    varcount=varcount+1 
+	if(val19!=0):
+	    pdf.cell(60, 4,'   {}.   Tea                                                                       {}                                       15                         {}'.format(varcount,val19,val19*15), 0, 1)
+	    varcount=varcount+1       
+	if(val20!=0):
+	    pdf.cell(60, 4,'   {}.   Café Latte                                                             {}                                      60                         {}'.format(varcount,val20,val20*60), 0, 1)
+	    varcount=varcount+1
+	if(val21!=0):
+	    pdf.cell(60, 4,'   {}.   Coconut Soup                                                      {}                                       70                         {}'.format(varcount,val21,val21*70), 0, 1)
+	    varcount=varcount+1
+	if(val22!=0):
+	    pdf.cell(60, 4,'   {}.   Veg Manchow Soup                                            {}                                       80                         {}'.format(varcount,val22,val22*80), 0, 1)
+	    varcount=varcount+1
+	if(val23!=0):
+	    pdf.cell(60, 4,'   {}.   Mango Lassi                                                        {}                                       40                         {}'.format(varcount,val23,val23*40), 0, 1)
+	    varcount=varcount+1
+	if(val24!=0):
+	    pdf.cell(60, 4,'   {}.   Sweet Lassi                                                          {}                                       40                         {}'.format(varcount,val24,val24*40), 0, 1)
+	    varcount=varcount+1
+	if(val25!=0):
+	    pdf.cell(60, 4,'   {}.   Soda Pop                                                              {}                                       30                         {}'.format(varcount,val25,val25*30), 0, 1)
+	    varcount=varcount+1
+	if(val26!=0):
+	    pdf.cell(60, 4,'   {}.   Aloo Kulcha                                                         {}                                       40                         {}'.format(varcount,val26,val26*40), 0, 1)
+	    varcount=varcount+1
+	if(val27!=0):
+	    pdf.cell(60, 4,'   {}.   Cheese Garlic Naan                                             {}                                       70                         {}'.format(varcount,val27,val27*70), 0, 1)
+	    varcount=varcount+1
+	if(val28!=0):
+	    pdf.cell(60, 4,'   {}.   Onion Kulcha                                                       {}                                       40                         {}'.format(varcount,val28,val28*40), 0, 1)
+	    varcount=varcount+1
+	if(val29!=0):
+	    pdf.cell(60, 4,'   {}.   Butter Naan                                                          {}                                       40                         {}'.format(varcount,val29,val29*40), 0, 1)
+	    varcount=varcount+1
+	if(val30!=0):
+	    pdf.cell(60, 4,'   {}.   Paneer Kulcha                                                      {}                                       50                         {}'.format(varcount,val30,val30*50), 0, 1)
+	    varcount=varcount+1
+	if(val31!=0):
+	    pdf.cell(60, 4,'   {}.   Garlic Naan                                                          {}                                       45                         {}'.format(varcount,val31,val31*45), 0, 1)
+	    varcount=varcount+1
+	if(val32!=0):
+	    pdf.cell(60, 4,'   {}.   Plain Kulcha                                                         {}                                       35                         {}'.format(varcount,val32,val32*35), 0, 1)
+	    varcount=varcount+1
+	if(val33!=0):
+	    pdf.cell(60, 4,'   {}.   Paneer Paratha                                                      {}                                       50                         {}'.format(varcount,val33,val33*50), 0, 1)
+	    varcount=varcount+1
+	if(val34!=0):
+	    pdf.cell(60, 4,'   {}.   Chilly Paratha                                                       {}                                       40                         {}'.format(varcount,val34,val34*40), 0, 1)
+	    varcount=varcount+1
+	if(val35!=0):
+	    pdf.cell(60, 4,'   {}.   Chicken Singapore Noodles                                 {}                                       90                         {}'.format(varcount,val35,val35*90), 0, 1)
+	    varcount=varcount+1
+	if(val36!=0):
+	    pdf.cell(60, 4,'   {}.   Jeera Rice                                                             {}                                       125                        {}'.format(varcount,val36,val36*125), 0, 1)
+	    varcount=varcount+1
+	if(val37!=0):
+	    pdf.cell(60, 4,'   {}.   VegDum Biryani                                                  {}                                       170                       {}'.format(varcount,val37,val37*170), 0, 1)
+	    varcount=varcount+1
+	if(val38!=0):
+	    pdf.cell(60, 4,'   {}.   Mix Fried Rice                                                     {}                                       180                        {}'.format(varcount,val38,val38*180), 0, 1)
+	    varcount=varcount+1
+	if(val39!=0):
+	    pdf.cell(60, 4,'   {}.   Egg Fried Rice                                                     {}                                       170                        {}'.format(varcount,val39,val39*170), 0, 1)
+	    varcount=varcount+1
+	if(val40!=0):
+	    pdf.cell(60, 4,'   {}.   Onion Salad                                                          {}                                       45                         {}'.format(varcount,val40,val40*45), 0, 1)
+	    varcount=varcount+1
+	if(val41!=0):
+	    pdf.cell(60, 4,'   {}.   Green Salad                                                          {}                                       60                         {}'.format(varcount,val41,val41*60), 0, 1)
+	    varcount=varcount+1
+	if(val42!=0):
+	    pdf.cell(60, 4,'   {}.   Aloo Raita                                                            {}                                       70                         {}'.format(varcount,val42,val42*70), 0, 1)
+	    varcount=varcount+1
+	if(val43!=0):
+	    pdf.cell(60, 4,'   {}.   Mix Veg Raita    	                                                 {}                                       70                         {}'.format(varcount,val43,val43*70), 0, 1)
+	    varcount=varcount+1
+
+	pdf.set_font('Times', '', 15)
+	pdf.cell(60, 4,'\n\n\n',0,1)
+	pdf.cell(60, 6,'                                                                           --------------------------------------------------',0,1)
+	pdf.cell(60, 6,'                                                                                Subtotal                                   {}'.format(temptotal),0,1)
+	pdf.cell(60, 6,'                                                                                Tax                                          {}'.format(tax),0,1)
+	pdf.cell(60, 6,'                                                                           --------------------------------------------------',0,1)
+	pdf.cell(60, 6,'                                                                                Total Payable Amount            {}'.format(final),0,1)
+	
+
+
+	
+	
+	pdf.output('invoice.pdf', 'F')
+
+
+
 #====================================== LEFTMOST BLOCK =================================================================
 
 lblMeal = Label(f1, font=('arial', 18, 'bold'), text="\nVEG. MENU\n")
@@ -827,7 +1062,7 @@ txtPaneerButterMasala.grid(row = 6, column = 1)
 
 VegCheeseBurger= Checkbutton(f1, text='Veg Cheese Burger\t( Rs. 70 )', variable=var7, onvalue=1, offvalue=0, 
 					font=('arial', 12, 'bold'), command=lambda: chkVegCheeseBurger()).grid(row=7, column=0, sticky=W)
-txtVegCheeseBurger = Entry(f1, font=('arial', 12, 'bold'), textvariable=VegCheeseBurger, width=6, justify='right', state=DISABLED)
+txtVegCheeseBurger = Entry(f1, font=('arial', 12, 'bold'), textvariable=varVegCheeseBurger, width=6, justify='right', state=DISABLED)
 txtVegCheeseBurger.grid(row = 7, column = 1)
 
 PaneerTikka= Checkbutton(f1, text='Paneer Tikka\t\t( Rs. 170 )', variable=var8, onvalue=1, offvalue=0, 
@@ -978,6 +1213,9 @@ btnReset = Button(f2BOTTOM, padx=16, pady=1, bd=4, fg="black", font=('arial', 16
 btnExit = Button(f2BOTTOM, padx=16, pady=1, bd=4, fg="black", font=('arial', 16, 'bold'), width=4, 
 			text="Exit", command=lambda: iExit()).grid(row=4,column=2)
 
+btnGenerateInvoice = Button(f2BOTTOM, padx=16, pady=1, bd=4, fg="black", font=('arial', 16, 'bold'), width=15, 
+			text="Generate Invoice", command=lambda: GenerateInvoice()).grid(row=5,column=1)
+
 lblspace=Label(f2BOTTOM, text="\n\n\n\n\n\n\n")
 lblspace.grid(row=5, column=0)
 
@@ -1063,7 +1301,7 @@ OnionSalad= Checkbutton(f3, text='Onion Salad\t\t( Rs. 45 )', variable=var40, on
 txtOnionSalad = Entry(f3, font=('arial', 12, 'bold'), textvariable=varOnionSalad, width=6, justify='right', state=DISABLED)
 txtOnionSalad.grid(row = 15, column = 1)
 
-GreenSalad= Checkbutton(f3, text='Kadhai Chicken\t\t( Rs. 60 )', variable=var41, onvalue=1, offvalue=0, 
+GreenSalad= Checkbutton(f3, text='Green Salad\t\t( Rs. 60 )', variable=var41, onvalue=1, offvalue=0, 
 					font=('arial', 12, 'bold'),  command=lambda: chkGreenSalad()).grid(row=16, column=0, sticky=W)
 txtGreenSalad = Entry(f3, font=('arial', 12, 'bold'), textvariable=varGreenSalad, width=6, justify='right', state=DISABLED)
 txtGreenSalad.grid(row = 16, column = 1)
