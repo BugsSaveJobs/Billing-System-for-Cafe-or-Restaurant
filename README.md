@@ -58,7 +58,6 @@ If you want to add any food item, follow the below mentioned steps :-
           ?? - Put (1+row value of above item),just be sure to put item at the end of any BLOCK.
 	  
 	  ? - Put the variable create on first step eg.  var45.
-     ```
 	  
 11.  ```ruby lblspace.grid(row=?, column=0) ``` ,increase the value at ? by one.
     
